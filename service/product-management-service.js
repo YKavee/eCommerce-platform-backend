@@ -10,6 +10,15 @@ class ProductManagementService {
     }
   }
 
+  // async getSingle(req, res) {
+  //   try {
+  //     const response = await ProductManagementDao.getOneProduct(req);
+  //     return response;
+  //   } catch (error) {
+  //     return error;
+  //   }
+  // }
+
   async addProduct(req, res) {
     try {
       const response = await ProductManagementDao.addProducts(req);
