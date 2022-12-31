@@ -11,5 +11,16 @@ class OrderManagementDao {
       });
     return collection;
   }
+
+  async getAllOrders() {
+    const collection = await Order.find({})
+      .then((docs) => {
+        return docs;
+      })
+      .catch((err) => {
+        return err;
+      });
+    return collection;
+  }
 }
 module.exports = new OrderManagementDao();

@@ -5,6 +5,7 @@ const OrderManagementService = require("../../service/order-management-service")
 class OrderManagementApi {
   constructor() {
     Router.post("/", this.postOrder);
+    Router.get("/", this.getAllOrders);
   }
 
   //Place new order
@@ -17,6 +18,16 @@ class OrderManagementApi {
       res.status(500).send(error);
     }
   }
+
+    //Retrieve orders
+    async getAllOrders(req, res) {
+      try {
+        const response = await OrderManagementService.getAll();
+        res.status(200).send(response);
+      } catch (error) {
+        res.status(500).send(error);
+      }
+    }
 }
 
 new OrderManagementApi();
