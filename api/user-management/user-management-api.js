@@ -1,0 +1,26 @@
+const express = require("express");
+const Router = express.Router();
+const UserManagementService = require("../../service/user-management-service");
+
+class UserManagementApi {
+  constructor() {
+    Router.post("/signup", this.postUsers);
+    //Router.post("/login", this.postUsers);
+  }
+
+  //Create new User
+  async postUsers(req, res) {
+    try {
+      const request = req.body;
+      const response = await UserManagementService.addUser(request);
+      res.status(201).send(response);
+    } catch (error) {
+      // console.log("error", error);
+      res.status(500).send(error);
+    }
+  }
+}
+
+new UserManagementApi();
+
+module.exports = Router;
