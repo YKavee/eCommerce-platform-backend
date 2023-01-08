@@ -12,5 +12,14 @@ class UserManagementService {
       return error;
     }
   }
+
+  async loginUser(req, res) {
+    try {
+      const response = await UserManagementDao.loginUsers(req);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
 }
 module.exports = new UserManagementService();
