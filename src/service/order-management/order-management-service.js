@@ -1,4 +1,4 @@
-const OrderManagementDao = require("../dao/order-management-dao");
+const OrderManagementDao = require("../../dao/order-management/order-management-dao");
 
 class OrderManagementService {
   async createOrder(req, res) {

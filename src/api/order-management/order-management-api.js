@@ -1,6 +1,6 @@
 const express = require("express");
 const Router = express.Router();
-const OrderManagementService = require("../../service/order-management-service");
+const OrderManagementService = require("../../service/order-management/order-management-service");
 
 class OrderManagementApi {
   constructor() {

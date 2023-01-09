@@ -1,6 +1,6 @@
 const express = require("express");
 const Router = express.Router();
-const UserManagementService = require("../../service/user-management-service");
+const UserManagementService = require("../../service/user-management/user-management-service");
 
 class UserManagementApi {
   constructor() {

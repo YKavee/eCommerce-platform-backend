@@ -1,4 +1,4 @@
-const UserManagementDao = require("../dao/user-management-dao");
+const UserManagementDao = require("../../dao/user-management/user-management-dao");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();

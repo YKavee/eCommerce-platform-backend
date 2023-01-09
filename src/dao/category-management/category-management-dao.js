@@ -1,7 +1,7 @@
-const Product = require("../model/product-model/product-model");
+const Product = require("../../model/product-model/product-model");
 
 class CategoryManagementDao {
-  async getProductsByCategory(category) {
+  async getProductsByCategoryId(category) {
     const collection = await Product.find({ category })
       .then((docs) => {
         return docs;

@@ -1,17 +1,17 @@
 const express = require("express");
 const Router = express.Router();
-const CategoryManagementService = require("../../service/category-management-service");
+const CategoryManagementService = require("../../service/category-management/category-management-service");
 
 class CategoryManagementApi {
   constructor() {
-    Router.get("/:_id", this.getAllProductsByCategory);
+    Router.get("/:_id", this.getAllProductsByCategoryId);
   }
 
   //Retrieve products by category
-  async getAllProductsByCategory(req, res) {
+  async getAllProductsByCategoryId(req, res) {
     try {
       const category = req.params._id;
-      const response = await CategoryManagementService.getAllByCategory(
+      const response = await CategoryManagementService.getAllByCategoryId(
         category
       );
       res.status(200).send(response);

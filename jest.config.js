@@ -1,6 +1,6 @@
 module.exports = {
   collectCoverage: true,
-  collectCoverageFrom: ["**/**/*.{js}"],
+  collectCoverageFrom: ["**/**/*.js"],
   transform: {
     "\\.js$": "<rootDir>/node_modules/babel-jest",
   },

@@ -1,12 +1,12 @@
 import request from "supertest";
 import express from "express";
 import router from "../../router";
-import OrderManagementService from "../../../service/order-management-service";
+import OrderManagementService from "../../../service/order-management/order-management-service";
 
 const app = new express();
 app.use("/", router);
 
-jest.mock("../../../service/product-management-service");
+jest.mock("../../../service/order-management/order-management-service");
 
 describe("order-management route", () => {
   describe("order-management create order function", () => {

@@ -1,4 +1,4 @@
-const Order = require("../model/order-model/order-model");
+const Order = require("../../model/order-model/order-model");
 
 class OrderManagementDao {
   async createOrder(req, res) {
