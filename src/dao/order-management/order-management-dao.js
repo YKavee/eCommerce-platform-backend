@@ -1,7 +1,7 @@
-const Order = require("../model/order-model/order-model");
+const Order = require("../../model/order-model/order-model");
 
 class OrderManagementDao {
-  async addOrders(req, res) {
+  async createOrder(req, res) {
     const collection = await Order.create(req)
       .then((result) => {
         return result;

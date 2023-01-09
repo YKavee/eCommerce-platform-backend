@@ -1,4 +1,4 @@
-const Product = require("../model/product-model/product-model");
+const Product = require("../../model/product-model/product-model");
 
 class ProductManagementDao {
   async getAllProducts() {
@@ -12,18 +12,7 @@ class ProductManagementDao {
     return collection;
   }
 
-  // async getOneProduct(req, res) {
-  //   const collection = await Product.findOne(req)
-  //     .then((docs) => {
-  //       return docs;
-  //     })
-  //     .catch((err) => {
-  //       return err;
-  //     });
-  //   return collection;
-  // }
-
-  async addProducts(req, res) {
+  async createProduct(req, res) {
     const collection = await Product.create(req)
       .then((result) => {
         return result;

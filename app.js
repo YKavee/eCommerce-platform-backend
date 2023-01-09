@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
-const product = require("./api/router");
+const router = require("./src/api/router");
 
 mongoose.Promise = global.Promise;
 
@@ -40,7 +40,7 @@ mongoose
   });
 
 // Routes which should handle requests
-app.use("/food-ordering/v1", product);
+app.use("/food-ordering/v1", router);
 
 app.use((req, res, next) => {
   const error = new Error("Not found");

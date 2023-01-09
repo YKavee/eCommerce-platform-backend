@@ -20,8 +20,8 @@ tags:
     description: Operations about categories
   - name: cart
     description: Operations about cart
-  - name: customers
-    description: Operations about customers
+  - name: users
+    description: Operations about users
 
 paths:
   /products/:
@@ -43,6 +43,13 @@ paths:
               schema:
                 type: string
               description: Returns operationId
+        "400":
+          description: Bad Request
+          headers:
+            Syy-Operation-Id:
+              schema:
+                type: string
+              description: Returns operationId
         "404":
           description: Not Found
           headers:
@@ -50,6 +57,8 @@ paths:
               schema:
                 type: string
               description: Returns operationId
+        "500":
+          description: "Internal server Error"
       security:
         - api_key: []
 
@@ -79,6 +88,13 @@ paths:
               schema:
                 type: string
               description: Returns operationId
+        "400":
+          description: Bad Request
+          headers:
+            Syy-Operation-Id:
+              schema:
+                type: string
+              description: Returns operationId
         "404":
           description: Not Found
           headers:
@@ -86,6 +102,8 @@ paths:
               schema:
                 type: string
               description: Returns operationId
+        "500":
+          description: "Internal server Error"
       security:
         - api_key: []
 
@@ -123,6 +141,13 @@ paths:
               description: Returns operationId
         "400":
           description: Bad Request
+          headers:
+            Syy-Operation-Id:
+              schema:
+                type: string
+              description: Returns operationId
+        "404":
+          description: Not Found
           headers:
             Syy-Operation-Id:
               schema:
@@ -175,8 +200,10 @@ paths:
               schema:
                 type: string
               description: Returns operationId
+        "500":
+          description: "Internal server Error"
 
-  /orders/products/{order_id}/:
+  /orders/{order_id}/products/{product_id}/:
     delete:
       tags:
         - "cart"
@@ -187,6 +214,12 @@ paths:
         - name: order_id
           in: path
           description: "ID of cart"
+          required: true
+          schema:
+            type: string
+        - name: product_id
+          in: path
+          description: "ID of the product"
           required: true
           schema:
             type: string
@@ -230,6 +263,8 @@ paths:
               schema:
                 type: string
               description: Returns operationId
+        "500":
+          description: "Internal server Error"
 
   /orders/{order_id}:
     delete:
@@ -285,11 +320,13 @@ paths:
               schema:
                 type: string
               description: Returns operationId
+        "500":
+          description: "Internal server Error"
 
-  /customers:
+  /users:
     post:
       tags:
-        - customers
+        - users
       summary: Create user
       description: This can only be done by the logged in user.
       operationId: createUser
@@ -306,7 +343,44 @@ paths:
           content: {}
       x-codegen-request-body-name: body
 
-  /customers/login:
+    get:
+      tags:
+        - users
+      summary: Get All User Details
+      description: Returns User details
+      operationId: getUserByID
+      responses:
+        "200":
+          description: list of Users.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/user-details"
+          headers:
+            Syy-Operation-Id:
+              schema:
+                type: string
+              description: Returns operationId
+        "400":
+          description: Bad Request
+          headers:
+            Syy-Operation-Id:
+              schema:
+                type: string
+              description: Returns operationId
+        "404":
+          description: Not Found
+          headers:
+            Syy-Operation-Id:
+              schema:
+                type: string
+              description: Returns operationId
+        "500":
+          description: "Internal server Error"
+      security:
+        - api_key: []
+
+  /users/login:
     get:
       tags:
         - customers
@@ -475,6 +549,15 @@ components:
         product_id:
           type: integer
           "$ref": "#/components/schemas/product"
+
+    user-details:
+      properties:
+        quantity:
+          type: integer
+        amount:
+          type: number
+        user_id:
+          type: integer
 
     request-order-details:
       properties:
