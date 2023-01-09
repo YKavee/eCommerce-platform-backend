@@ -4,30 +4,30 @@ const OrderManagementService = require("../../service/order-management-service")
 
 class OrderManagementApi {
   constructor() {
-    Router.post("/", this.postOrder);
+    Router.post("/", this.createOrder);
     Router.get("/", this.getAllOrders);
   }
 
   //Place new order
-  async postOrder(req, res) {
+  async createOrder(req, res) {
     try {
       const request = req.body;
-      const response = await OrderManagementService.addOrder(request);
+      const response = await OrderManagementService.createOrder(request);
       res.status(201).send(response);
     } catch (error) {
       res.status(500).send(error);
     }
   }
 
-    //Retrieve orders
-    async getAllOrders(req, res) {
-      try {
-        const response = await OrderManagementService.getAll();
-        res.status(200).send(response);
-      } catch (error) {
-        res.status(500).send(error);
-      }
+  //Retrieve orders
+  async getAllOrders(req, res) {
+    try {
+      const response = await OrderManagementService.getAll();
+      res.status(200).send(response);
+    } catch (error) {
+      res.status(500).send(error);
     }
+  }
 }
 
 new OrderManagementApi();

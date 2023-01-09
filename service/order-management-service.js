@@ -1,10 +1,9 @@
 const OrderManagementDao = require("../dao/order-management-dao");
 
 class OrderManagementService {
-  async addOrder(req, res) {
+  async createOrder(req, res) {
     try {
-      req.total_price = req.price1 + req.price2;
-      const response = await OrderManagementDao.addOrders(req);
+      const response = await OrderManagementDao.createOrder(req);
       return response;
     } catch (error) {
       return error;
