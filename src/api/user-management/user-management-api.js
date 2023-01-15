@@ -24,7 +24,7 @@ class UserManagementApi {
     try {
       const request = req.body;
       const response = await UserManagementService.loginUser(request);
-      res.status(201).send(response);
+      res.status(201).send({ message: "Auth Successful", token: response });
     } catch (error) {
       // console.log("error", error);
       res.status(500).send(error);

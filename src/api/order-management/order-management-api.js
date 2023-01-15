@@ -1,11 +1,12 @@
 const express = require("express");
 const Router = express.Router();
 const OrderManagementService = require("../../service/order-management/order-management-service");
+const checkAuth = require("../../middleware/check-auth");
 
 class OrderManagementApi {
   constructor() {
-    Router.post("/", this.createOrder);
-    Router.get("/", this.getAllOrders);
+    Router.post("/", checkAuth, this.createOrder);
+    Router.get("/", checkAuth, this.getAllOrders);
   }
 
   //Place new order
