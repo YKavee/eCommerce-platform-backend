@@ -1,12 +1,13 @@
 const express = require("express");
 const Router = express.Router();
 const ProductManagementService = require("../../service/product-management/product-management-service");
+const checkAuth = require("../../middleware/check-auth");
 
 class ProductManagementApi {
   constructor() {
     Router.get("/", this.getAllProducts);
     //Router.get("/single", this.getSingleProduct);
-    Router.post("/", this.createProduct);
+    Router.post("/", checkAuth, this.createProduct);
   }
 
   //Retrieve all products

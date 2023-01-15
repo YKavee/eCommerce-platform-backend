@@ -41,8 +41,6 @@ class ProductManagementDao {
                 reject(new Error("Auth failed"));
               }
               if (result) {
-                // console.log('result', result);
-                // console.log('process.env.JWT_KEY', process.env.JWT_KEY);
                 const token = jwt.sign(
                   {
                     email: user[0].email,
